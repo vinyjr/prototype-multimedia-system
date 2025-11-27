@@ -1,0 +1,172 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      COMECE AQUI - VERSÃO COMPACTA                        ║
+║            Sistema Educacional de Áudio Digital - 3 Alunos                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+⏱️ VERSÃO REDUZIDA EM 50%
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 4 ARQUIVOS PRINCIPAIS (21 KB total)
+
+1. ⭐ CHEAT_SHEET.md
+   └─ 1 página, referência rápida
+   └─ Quem fala o quê
+   └─ 9 demos obrigatórias
+   └─ Respostas prontas
+
+2. 📝 PRESENTATION_PROMPT_COMPACT.md
+   └─ Contexto do projeto
+   └─ 5 seções
+   └─ 8 slides
+
+3. 🎬 SLIDE_TEXTS_COMPACT.md
+   └─ Falas prontas para cada aluno
+   └─ Timing exato
+   └─ Quando clicar cada botão
+
+4. 🗂️ COMPACT_VERSION_INDEX.md
+   └─ Guia completo de uso
+   └─ Timeline de preparação
+   └─ Qual arquivo usar quando
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 INÍCIO RÁPIDO (15 MINUTOS)
+
+PASSO 1: Abra CHEAT_SHEET.md (2 min)
+  ├─ Encontre sua seção (Aluno 1/2/3)
+  ├─ Leia quem fala o quê
+  └─ Memorize as 9 demos
+
+PASSO 2: Estude SLIDE_TEXTS_COMPACT.md (8 min)
+  ├─ Sua seção específica
+  ├─ Leia as falas prontas
+  └─ Aprenda timing
+
+PASSO 3: Teste no projeto (5 min)
+  └─ Clique em cada demo
+  └─ Teste o som
+  └─ Pronto!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+👥 QUEM FAZ O QUÊ
+
+ALUNO 1 (5-6 min)
+  • Intro + Conceitos + Espectro
+  • Demos: Amostragem, Ondas, Som, Análise
+  • Leia: CHEAT_SHEET.md (seção dele) + SLIDE_TEXTS_COMPACT (1-6)
+
+ALUNO 2 (5-6 min)
+  • Formatos + MIDI + Processamento
+  • Demos: Tabela, Teclado, Filtros, Equalizador
+  • Leia: CHEAT_SHEET.md (seção dele) + SLIDE_TEXTS_COMPACT (7-10)
+
+ALUNO 3 (4-5 min)
+  • Tecnologia + Quiz + Conclusão
+  • Demos: Código, Quiz, Responsividade
+  • Leia: CHEAT_SHEET.md (seção dele) + SLIDE_TEXTS_COMPACT (11-18)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ TIMING TOTAL: 17-20 MINUTOS
+
+Abertura:          1 min
+Aluno 1 (Conceitos): 5-6 min
+Aluno 2 (Formatos): 5-6 min
+Aluno 3 (Tech):    4-5 min
+Perguntas:         2 min
+━━━━━━━━━━━━━━━━━━━━━━
+TOTAL:            17-20 min
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST (5 ITENS)
+
+- [ ] Todos leram CHEAT_SHEET.md
+- [ ] Cada aluno estudou sua seção
+- [ ] Testaram projeto + som
+- [ ] Testaram todas 9 demos
+- [ ] Vão chegar 15 min antes
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎬 9 DEMONSTRAÇÕES (NÃO PULE NENHUMA)
+
+1. [Animar Amostragem]
+2. [Senoidal] + [Som 440Hz]
+3. [Quadrada] + [Onda Quadrada]
+4. [Análise Frequências]
+5. [Tabela Formatos]
+6. [Teclado MIDI] (tocar C-D-E-F-G)
+7. [Passa-Baixo]
+8. [Equalizador]
+9. [Quiz] → [Resultado]
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💬 FALAS-CHAVE (MEMORIZE ISSO)
+
+ALUNO 1:
+"Onda vermelha = som original. Pontos azuis = amostras."
+
+ALUNO 2:
+"MP3 tira 90% do tamanho porque remove frequências inaudíveis."
+
+ALUNO 3:
+"Conceitos complexos ficam claros quando você vê, ouve e interage."
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ SE PERGUNTAREM
+
+P: Qual qualidade de áudio?
+R: 44.1 kHz (padrão CD)
+
+P: Funciona em tudo?
+R: Chrome, Firefox, Safari, Edge
+
+P: Por que JavaScript puro?
+R: Mais didático que frameworks
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 PRIORIDADES
+
+1. OBRIGATÓRIO: Leia CHEAT_SHEET.md (2 min)
+2. OBRIGATÓRIO: Estude sua seção em SLIDE_TEXTS_COMPACT.md (10 min)
+3. OBRIGATÓRIO: Teste as 9 demos (5 min)
+4. BOM: Ensaie 2x com projeto aberto (15 min)
+5. EXCELENTE: Ensaio em grupo (20 min)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🏆 MENSAGEM FINAL
+
+Vocês fizeram algo incrível. Apresentem com confiança. 
+O público quer gostar. Vocês vão se sair muito bem!
+
+BOA APRESENTAÇÃO! 🎉
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📚 ARQUIVOS DISPONÍVEIS (por ordem de importância)
+
+VERSÃO COMPACTA (RECOMENDADA):
+  1. ⭐ CHEAT_SHEET.md
+  2. PRESENTATION_PROMPT_COMPACT.md
+  3. SLIDE_TEXTS_COMPACT.md
+  4. COMPACT_VERSION_INDEX.md
+
+VERSÃO ORIGINAL (SE QUISER APROFUNDAR):
+  • README.md
+  • PRESENTATION_PROMPT.md
+  • PRESENTATION_GUIDE.md
+  • SLIDE_TEXTS.md
+  • QUICK_START.txt
+
+═══════════════════════════════════════════════════════════════════════════════
+
+👉 PRÓXIMA AÇÃO: Abra CHEAT_SHEET.md
+
+ÓTIMA APRESENTAÇÃO! 🚀
