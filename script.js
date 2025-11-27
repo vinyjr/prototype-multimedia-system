@@ -636,6 +636,79 @@ const quizQuestions = [
     ],
     correct: 3,
   },
+  {
+    question: "Qual é o termo usado para as unidades mínimas de som na representação digital?",
+    options: ["Bits", "Vibrações", "Amostras de som", "Sinais analógicos"],
+    correct: 2,
+  },
+  {
+    question: "Um microfone é um exemplo de transdutor que converte:",
+    options: [
+      "Sinal elétrico para acústico.",
+      "Sinal digital para analógico.",
+      "Acústico (som) para elétrico.",
+      "Sinais magnéticos para vibrações.",
+    ],
+    correct: 2,
+  },
+  {
+    question: "Qual é o dispositivo usado para converter um sinal de Analógico para Digital?",
+    options: ["DAC", "PCM", "ADC", "DAT"],
+    correct: 2,
+  },
+  {
+    question: "O que é uma onda senoidal no contexto das vibrações sonoras?",
+    options: [
+      "Uma forma complexa que pode ser analisada por Fourier.",
+      "A forma mais simples de vibração sonora.",
+      "Apenas a combinação de ondas complexas.",
+      "Uma onda de pressão atmosférica.",
+    ],
+    correct: 1,
+  },
+  {
+    question: "Qual é o primeiro passo no processo de digitalização do som (como mostrado no fluxograma)?",
+    options: ["Amostragem", "Quantização", "Filtragem analógica", "Codificação"],
+    correct: 2,
+  },
+  {
+    question: "O que acontece com a qualidade e o armazenamento se a taxa de amostragem for maior?",
+    options: [
+      "A amostragem é mais precisa, mas a quantidade de informação armazenada é menor.",
+      "A amostragem é menos precisa, mas a quantidade de informação armazenada é maior.",
+      "A amostragem é mais precisa, e a quantidade de informação armazenada é maior.",
+      "Não há alteração na precisão nem na quantidade de informação.",
+    ],
+    correct: 2,
+  },
+  {
+    question:
+      "Qual é o formato de arquivo de áudio tipicamente não compactado (não comprimido) e que usa a extensão .wav?",
+    options: ["MP3", "Real Áudio (Ra, ram)", "WAV", "WMA"],
+    correct: 2,
+  },
+  {
+    question:
+      "Qual termo descreve operações de processamento digital de som feitas sobre as amostras separadas (e não sobre sequências)?",
+    options: [
+      "Processamento no domínio da frequência",
+      "Processamento de compressão",
+      "Processamento no domínio do tempo",
+      "Processamento de codificação",
+    ],
+    correct: 2,
+  },
+  {
+    question:
+      "No caso dos sinais de voz, a faixa de frequência de interesse vai tipicamente de 300Hz a qual valor (para garantir 85% da inteligibilidade)?",
+    options: ["8000 Hz", "3400 Hz", "44100 Hz", "125 ms"],
+    correct: 1,
+  },
+  {
+    question: "Qual das seguintes formas de codificação de áudio é um exemplo de MPEG camada 3?",
+    options: ["PCM", "ADPCM", "MP3", "AC-3"],
+    correct: 2,
+  },
 ];
 
 let selectedQuestions = [];
