@@ -592,129 +592,49 @@ function startSpectrumAnalyzer() {
 
 const quizQuestions = [
   {
-    question: "O que é amostragem (sampling) em áudio digital?",
-    options: [
-      "A conversão de um sinal analógico contínuo em amostras discretas em intervalos regulares",
-      "A compressão de arquivo de áudio",
-      "O processo de gravação de música original",
-      "A criptografia de dados de áudio",
-    ],
-    correct: 0,
+    question: "As vibrações sonoras se propagam como ondas de quê?",
+    options: ["Ondas de calor", "Ondas de pressão atmosférica", "Sinais magnéticos", "Tensão de áudio"],
+    correct: 1,
   },
   {
-    question: "Qual é a taxa de amostragem padrão para CD de áudio?",
-    options: ["22.05 kHz", "32 kHz", "44.1 kHz", "96 kHz"],
-    correct: 2,
-  },
-  {
-    question: "O que é a profundidade de bits (bit depth) em áudio?",
+    question: "O que é um alto-falante em termos de transdução?",
     options: [
-      "A velocidade de reprodução do áudio",
-      "O número de bits usados para representar cada amostra",
-      "A quantidade de compressão aplicada",
-      "A frequência máxima audível",
+      "Um transdutor de acústico para elétrico (como um microfone).",
+      "Um transdutor de elétrico para acústico.",
+      "Um dispositivo para armazenar sinais magnéticos.",
+      "Um quantizador de sinal.",
     ],
     correct: 1,
   },
   {
-    question: "Qual formato de áudio oferece compressão sem perda de qualidade?",
-    options: ["MP3", "AAC", "FLAC", "OGG"],
-    correct: 2,
-  },
-  {
-    question: "O que é a Transformada de Fourier em processamento de áudio?",
+    question: "Qual é a principal desvantagem da representação analógica do som?",
     options: [
-      "Um método para aumentar o volume do áudio",
-      "Um algoritmo para converter sinal do domínio do tempo para domínio da frequência",
-      "Uma técnica de compressão de áudio",
-      "Um filtro para remover ruído",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Qual é a frequência máxima que o ouvido humano pode perceber?",
-    options: ["10 kHz", "15 kHz", "20 kHz", "30 kHz"],
-    correct: 2,
-  },
-  {
-    question: "O que é MIDI?",
-    options: [
-      "Um formato de compressão de áudio",
-      "Um protocolo de controle que armazena instruções musicais, não áudio real",
-      "Um tipo de microfone de estúdio",
-      "Uma técnica de masterização de áudio",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Qual é o bitrate típico para MP3 de boa qualidade?",
-    options: ["64 kbps", "128 kbps", "192-320 kbps", "500 kbps"],
-    correct: 2,
-  },
-  {
-    question: "O que é um filtro passa-baixo?",
-    options: [
-      "Um filtro que reduz o volume do áudio",
-      "Um filtro que permite frequências altas e atenua frequências baixas",
-      "Um filtro que permite frequências baixas e atenua frequências altas",
-      "Um filtro que remove ruído completamente",
+      "A dificuldade de conversão para formato digital (PCM).",
+      "A necessidade de frequências de amostragem muito altas.",
+      "Estar sujeita à contaminação por ruído em todas as transformações.",
+      "Ser propagada apenas como ondas de pressão.",
     ],
     correct: 2,
   },
   {
-    question: "Qual é a relação entre taxa de amostragem e frequência máxima representável?",
+    question: "No processo de digitalização, o que o ADC (Conversor Analógico-Digital) faz?",
     options: [
-      "Não há relação",
-      "A frequência máxima é igual à taxa de amostragem",
-      "A frequência máxima é metade da taxa de amostragem (Teorema de Nyquist)",
-      "A frequência máxima é o dobro da taxa de amostragem",
+      "Converte um sinal digital de volta para um sinal analógico.",
+      "Armazena o sinal digitalizado.",
+      "Recebe o sinal analógico e o prepara para o sistema digital.",
+      "Filtra o ruído de quantização.",
     ],
     correct: 2,
   },
   {
-    question: "O que é quantização em áudio digital?",
+    question: "Qual das opções a seguir representa o áudio não comprimido?",
     options: [
-      "O processo de seleção de qual música ouvir",
-      "O processo de mapear valores contínuos para valores discretos",
-      "A velocidade de processamento de áudio",
-      "O número de canais de áudio",
+      "MP3 (MPEG camada 3)",
+      "ADPCM (codificação diferencial adaptativa)",
+      "WMA (Windows Media Audio)",
+      "PCM (Modulação por Código de Pulso)",
     ],
-    correct: 1,
-  },
-  {
-    question: "Qual é o tamanho aproximado de um minuto de áudio CD (44.1 kHz, 16 bits, estéreo)?",
-    options: ["1 MB", "5 MB", "10 MB", "30 MB"],
-    correct: 2,
-  },
-  {
-    question: "O que é aliasing em áudio digital?",
-    options: [
-      "Um efeito de eco artificial",
-      "Um artefato causado por amostragem inadequada que cria frequências falsas",
-      "Uma técnica de compressão de áudio",
-      "Um tipo de reverberação",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Qual é a diferença entre áudio mono e estéreo?",
-    options: [
-      "Estéreo tem melhor qualidade de áudio",
-      "Mono usa um canal e estéreo usa dois canais para criar efeito de espacialidade",
-      "Mono é para fala e estéreo para música",
-      "Não há diferença significativa",
-    ],
-    correct: 1,
-  },
-  {
-    question: "O que é dithering em processamento de áudio?",
-    options: [
-      "Um tipo de efeito reverberação",
-      "Um processo de redução de bits depth que adiciona ruído de baixo nível para reduzir artefatos de quantização",
-      "Uma técnica de compressão",
-      "Um filtro para remover frequências altas",
-    ],
-    correct: 1,
+    correct: 3,
   },
 ];
 
