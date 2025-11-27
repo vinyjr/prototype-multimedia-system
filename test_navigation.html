@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Navegação</title>
+</head>
+<body>
+    <h1>Teste de Navegação - Sistema de Áudio Digital</h1>
+    
+    <script>
+        // Verificar se as funções estão carregadas
+        const testResults = [];
+        
+        // Teste 1: Verificar se o arquivo HTML carrega sem erros
+        testResults.push("✓ Página HTML carregada");
+        
+        // Teste 2: Verificar IDs das seções
+        const sections = ['home', 'conceitos', 'formatos', 'processamento', 'quiz'];
+        sections.forEach(id => {
+            if (document.getElementById(id)) {
+                testResults.push(`✓ Seção '${id}' encontrada`);
+            } else {
+                testResults.push(`✗ Seção '${id}' NÃO encontrada`);
+            }
+        });
+        
+        // Teste 3: Verificar classe active
+        const activeSection = document.querySelector('.section.active');
+        if (activeSection) {
+            testResults.push(`✓ Seção ativa encontrada: ${activeSection.id}`);
+        } else {
+            testResults.push("✗ Nenhuma seção está marcada como ativa");
+        }
+        
+        console.log("Resultados do teste de navegação:");
+        testResults.forEach(result => console.log(result));
+    </script>
+    
+    <p><strong>Resultados do Teste:</strong></p>
+    <ul id="results"></ul>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsList = document.getElementById('results');
+            testResults.forEach(result => {
+                const li = document.createElement('li');
+                li.textContent = result;
+                li.style.color = result.startsWith('✓') ? 'green' : 'red';
+                resultsList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
