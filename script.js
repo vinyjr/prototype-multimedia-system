@@ -2,6 +2,10 @@
 // GERENCIAMENTO DE SEÇÕES
 // ====================================
 
+function goToHome() {
+  goToSection("home");
+}
+
 function goToSection(sectionId) {
   // Remove a classe 'active' de todas as seções
   const sections = document.querySelectorAll(".section");
