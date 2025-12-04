@@ -18,152 +18,6 @@ function goToSection(sectionId) {
 }
 
 // ====================================
-// CANVAS ANIMATIONS - AMOSTRAGEM
-// ====================================
-
-function animateSampling() {
-	const canvas = document.getElementById("samplingCanvas");
-	const ctx = canvas.getContext("2d");
-
-	const width = canvas.width;
-	const height = canvas.height;
-	const centerY = height / 2;
-
-	let animationProgress = 0;
-	const animationDuration = 3000; // ms
-	let animationId = null;
-
-	function animate(timestamp) {
-		if (!animate.startTime) animate.startTime = timestamp;
-		animationProgress =
-			((timestamp - animate.startTime) % animationDuration) / animationDuration;
-
-		ctx.fillStyle = "#f8f9fa";
-		ctx.fillRect(0, 0, width, height);
-
-		ctx.strokeStyle = "#bdc3c7";
-		ctx.lineWidth = 1;
-		ctx.beginPath();
-		ctx.moveTo(0, centerY);
-		ctx.lineTo(width, centerY);
-		ctx.stroke();
-
-		ctx.strokeStyle = "#e74c3c";
-		ctx.lineWidth = 2;
-		ctx.beginPath();
-		for (let x = 0; x < width; x++) {
-			const frequency = 0.01;
-			const y =
-				centerY -
-				Math.sin(x * frequency + animationProgress * Math.PI * 2) * 60;
-			if (x === 0) ctx.moveTo(x, y);
-			else ctx.lineTo(x, y);
-		}
-		ctx.stroke();
-
-		// Desenhar pontos de amostragem
-		const samplePoints = 16;
-		const sampleInterval = width / samplePoints;
-
-		ctx.fillStyle = "#3498db";
-		for (let i = 0; i < samplePoints; i++) {
-			const x = i * sampleInterval;
-			const frequency = 0.01;
-			const y =
-				centerY -
-				Math.sin(x * frequency + animationProgress * Math.PI * 2) * 60;
-
-			ctx.beginPath();
-			ctx.arc(x, y, 4, 0, Math.PI * 2);
-			ctx.fill();
-
-			// Linhas de grade
-			ctx.strokeStyle = "#3498db";
-			ctx.lineWidth = 0.5;
-			ctx.beginPath();
-			ctx.moveTo(x, centerY);
-			ctx.lineTo(x, y);
-			ctx.stroke();
-		}
-
-		// Desenhar sinal digital (degraus)
-		ctx.strokeStyle = "#2ecc71";
-		ctx.lineWidth = 2;
-		ctx.beginPath();
-		for (let i = 0; i < samplePoints - 1; i++) {
-			const x1 = i * sampleInterval;
-			const x2 = (i + 1) * sampleInterval;
-			const frequency = 0.01;
-			const y =
-				centerY -
-				Math.sin(x1 * frequency + animationProgress * Math.PI * 2) * 60;
-
-			if (i === 0) ctx.moveTo(x1, y);
-			ctx.lineTo(x2, y);
-		}
-		ctx.stroke();
-
-		// Labels
-		ctx.fillStyle = "#2c3e50";
-		ctx.font = "12px Arial";
-		ctx.fillText("Sinal Analógico (Vermelho)", 10, 20);
-		ctx.fillText("Sinal Digital (Verde)", 10, 40);
-		ctx.fillText("Pontos de Amostragem (Azul)", 10, 60);
-
-		animationId = requestAnimationFrame(animate);
-	}
-
-	animate.startTime = null;
-	animate(performance.now());
-}
-
-// ====================================
-// ONDAS SONORAS - SVG
-// ====================================
-
-function drawWave(type) {
-	const svg = document.getElementById("waveVisualization");
-	const wavePath = document.getElementById("wavePath");
-
-	let pathData = "M 0 100";
-	const points = 800;
-	const amplitude = 80;
-
-	for (let i = 0; i < points; i++) {
-		const x = i;
-		let y = 100;
-
-		switch (type) {
-			case "sine":
-				y = 100 - amplitude * Math.sin((i / 100) * Math.PI * 2);
-				break;
-			case "square": {
-				const squarePhase = (i / 100) % 2;
-				y = squarePhase < 1 ? 100 - amplitude : 100 + amplitude;
-				break;
-			}
-			case "triangle": {
-				const trianglePhase = (i / 100) % 2;
-				y =
-					trianglePhase < 1
-						? 100 - amplitude + trianglePhase * amplitude * 2
-						: 100 + amplitude - (trianglePhase - 1) * amplitude * 2;
-				break;
-			}
-		}
-
-		pathData += ` L ${x} ${y}`;
-	}
-
-	wavePath.setAttribute("d", pathData);
-}
-
-// Desenhar onda padrão ao carregar
-window.addEventListener("load", () => {
-	drawWave("sine");
-});
-
-// ====================================
 // WEB AUDIO API - SÍNTESE DE ÁUDIO
 // ====================================
 
@@ -268,72 +122,6 @@ function playNote(frequency) {
 
 	gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
 	oscillator.start(ctx.currentTime);
-}
-
-// ====================================
-// ANIMAÇÃO DE FREQUÊNCIAS
-// ====================================
-
-let frequencyAnimationActive = false;
-let frequencyAnimationId = null;
-
-function startFrequencyAnimation() {
-	const canvas = document.getElementById("frequencyCanvas");
-	if (!canvas) return;
-
-	const ctx = canvas.getContext("2d");
-	frequencyAnimationActive = true;
-
-	function animate() {
-		const width = canvas.width;
-		const height = canvas.height;
-
-		// Limpar canvas com gradiente
-		const gradient = ctx.createLinearGradient(0, 0, 0, height);
-		gradient.addColorStop(0, "#f8f9fa");
-		gradient.addColorStop(1, "#ecf0f1");
-		ctx.fillStyle = gradient;
-		ctx.fillRect(0, 0, width, height);
-
-		// Desenhar linha de zero
-		ctx.strokeStyle = "#bdc3c7";
-		ctx.lineWidth = 1;
-		ctx.beginPath();
-		ctx.moveTo(0, height / 2);
-		ctx.lineTo(width, height / 2);
-		ctx.stroke();
-
-		// Desenhar barras de frequência
-		const barCount = 32;
-		const barWidth = width / barCount;
-
-		ctx.fillStyle = "#3498db";
-		for (let i = 0; i < barCount; i++) {
-			const x = i * barWidth;
-			const randomHeight = Math.random() * (height / 2);
-
-			ctx.fillRect(
-				x + 2,
-				height / 2 - randomHeight,
-				barWidth - 4,
-				randomHeight,
-			);
-		}
-
-		// Labels
-		ctx.fillStyle = "#2c3e50";
-		ctx.font = "bold 14px Arial";
-		ctx.fillText("Espectro de Frequências", 10, 25);
-		ctx.font = "12px Arial";
-		ctx.fillText("Baixas (Hz)", 10, height - 10);
-		ctx.fillText("Altas (Hz)", width - 100, height - 10);
-
-		if (frequencyAnimationActive) {
-			frequencyAnimationId = requestAnimationFrame(animate);
-		}
-	}
-
-	animate();
 }
 
 // ====================================
@@ -943,32 +731,24 @@ function restartQuiz() {
 }
 
 // ====================================
-// INICIALIZAÇÃO AO CARREGAR A PÁGINA
-// ====================================
-
-window.addEventListener("load", () => {
-	// Desenhar onda padrão
-	drawWave("sine");
-
-	// Iniciar com a seção home ativa
-	goToSection("home");
-});
-
-// ====================================
 // PARAR ANIMAÇÕES AO NAVEGAR
 // ====================================
 
 const originalGoToSection = goToSection;
 window.goToSection = (sectionId) => {
-	frequencyAnimationActive = false;
-	spectrumAnimationActive = false;
-
-	if (frequencyAnimationId) {
-		cancelAnimationFrame(frequencyAnimationId);
-	}
-	if (spectrumAnimationId) {
-		cancelAnimationFrame(spectrumAnimationId);
-	}
-
 	originalGoToSection(sectionId);
 };
+
+function playAudio(audioPath, vol = 0.2) {
+	const audio = new Audio(audioPath);
+
+	//Definir volume
+	audio.volume = Math.max(0.0, Math.min(1.0, vol))
+
+	audio.play();
+
+	setTimeout(() => {
+		audio.pause();
+		audio.currentTime = 0;
+	}, 2000);
+}

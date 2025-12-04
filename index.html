@@ -91,48 +91,30 @@
       <div class="content-card">
         <h3>O que é Áudio Digital?</h3>
         <p>
-          Áudio digital é a representação de sinais sonoros contínuos em um formato discreto, utilizando números para
-          representar amostras do sinal original. Este processo é chamado de digitalização.
-        </p>
-      </div>
-
-      <!-- IMAGEM MATRICIAL: Conceito de Sampling -->
-      <div class="media-section">
-        <h3>Processo de Amostragem (Sampling)</h3>
-        <canvas id="samplingCanvas" width="800" height="300" class="canvas-display"></canvas>
-        <button class="btn btn-small" onclick="animateSampling()">Animar Amostragem</button>
-        <p class="caption">
-          Visualização do processo de amostragem de um sinal analógico contínuo para digital discreto.
+          Áudio digital é a representação do som em formato de código binário, 
+          ou seja, uma sequência de números (bits) que pode ser processada, armazenada e transmitida por meios digitais. 
         </p>
       </div>
 
       <!-- Onda Sonora -->
       <div class="media-section">
         <h3>Representação de Onda Sonora</h3>
-        <img src="assets/onda-sonora.svg" alt="Imagem ilustrativa de uma onda sonora">
+        <img src="assets/images/onda-sonora.svg" alt="Imagem ilustrativa de uma onda sonora">
         <p class="caption">
           - Ondas sonoras são vibrações que ao penetrarem no nosso ouvido produzem sensações auditivas. <br />
           - Seremos humanos são capazes de perceber sons com frequência entre 20 Hz até 20000 Hz.
         </p>
       </div>
 
-      <!-- ÁUDIO: Exemplo de Som Digitalizado -->
+      <!-- Exemplo de Som Digitalizado -->
       <div class="media-section">
         <h3>Exemplo de Áudio Digitalizado</h3>
         <div class="audio-player">
-          <button class="btn btn-small" onclick="playGeneratedAudio('sine', 440)">Som 440 Hz (Lá)</button>
-          <button class="btn btn-small" onclick="playGeneratedAudio('square', 440)">Onda Quadrada</button>
-          <button class="btn btn-small" onclick="playGeneratedAudio('noise', 0)">Ruído Branco</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/som-440hz.mp3')">Som 440 Hz (Lá)</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/onda-quadrada.mp3')">Onda Quadrada</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/ruido-branco.mp3')">Ruído Branco</button>
         </div>
-        <p class="caption">Sons gerados digitalmente para demonstração.</p>
-      </div>
-
-      <!-- ANIMAÇÃO: Espectro de Frequências -->
-      <div class="media-section">
-        <h3>Espectro de Frequências</h3>
-        <canvas id="frequencyCanvas" width="800" height="250" class="canvas-display"></canvas>
-        <button class="btn btn-small" onclick="startFrequencyAnimation()">Iniciar Análise de Frequências</button>
-        <p class="caption">Visualização animada do espectro de frequências em tempo real.</p>
+        <p class="caption">Exemplos de áudios digitalizados gerados pelo Audacity.</p>
       </div>
 
       <div class="navigation-buttons">
