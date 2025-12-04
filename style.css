@@ -345,26 +345,6 @@ MAIN CONTAINER
 }
 
 /* ====================================
-   VIDEO CONTAINER
-   ==================================== */
-
-.video-container {
-  background: #2c3e50;
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 1rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-placeholder {
-  width: 100%;
-  height: auto;
-  max-width: 640px;
-}
-
-/* ====================================
    QUIZ STYLES
    ==================================== */
 
