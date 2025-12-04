@@ -32,58 +32,6 @@ function getAudioContext() {
 	return audioContext;
 }
 
-function playGeneratedAudio(type, frequency) {
-	const ctx = getAudioContext();
-
-	// Parar áudio anterior se estiver tocando
-	if (oscillator) {
-		try {
-			oscillator.stop();
-		} catch (e) {
-			// Ignorar erro se já foi parado
-		}
-		oscillator = null;
-	}
-
-	oscillator = ctx.createOscillator();
-	gainNode = ctx.createGain();
-
-	oscillator.connect(gainNode);
-	gainNode.connect(ctx.destination);
-
-	switch (type) {
-		case "sine":
-			oscillator.type = "sine";
-			oscillator.frequency.value = frequency;
-			break;
-		case "square":
-			oscillator.type = "square";
-			oscillator.frequency.value = frequency;
-			break;
-		case "noise": {
-			// Gerar ruído branco com buffer
-			const bufferSize = ctx.sampleRate;
-			const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-			const data = noiseBuffer.getChannelData(0);
-			for (let i = 0; i < bufferSize; i++) {
-				data[i] = Math.random() * 2 - 1;
-			}
-			const noiseSource = ctx.createBufferSource();
-			noiseSource.buffer = noiseBuffer;
-			noiseSource.loop = true;
-			noiseSource.connect(gainNode);
-			noiseSource.start();
-			oscillator = noiseSource;
-			return;
-		}
-	}
-
-	gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
-	gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
-
-	oscillator.start(ctx.currentTime);
-}
-
 function stopNote() {
 	if (oscillator && audioContext) {
 		gainNode.gain.setValueAtTime(gainNode.gain.value, audioContext.currentTime);
@@ -107,7 +55,7 @@ function playNote(frequency) {
 		try {
 			oscillator.stop();
 		} catch (e) {
-			// Ignorar
+	
 		}
 	}
 
@@ -125,280 +73,7 @@ function playNote(frequency) {
 }
 
 // ====================================
-// FORMATOS DE ÁUDIO
-// ====================================
-
-function drawFormatsTable() {
-	const canvas = document.getElementById("formatsTableCanvas");
-	if (!canvas) return;
-
-	const ctx = canvas.getContext("2d");
-
-	const width = canvas.width;
-	const height = canvas.height;
-
-	// Limpar canvas
-	ctx.fillStyle = "#f8f9fa";
-	ctx.fillRect(0, 0, width, height);
-
-	// Dados da tabela
-	const formats = [
-		{
-			name: "WAV",
-			bitrate: "Sem compressão",
-			quality: "Lossless",
-			size: "Grande",
-		},
-		{ name: "MP3", bitrate: "128-320 kbps", quality: "Lossy", size: "Pequeno" },
-		{
-			name: "FLAC",
-			bitrate: "Sem compressão",
-			quality: "Lossless",
-			size: "Médio",
-		},
-		{ name: "AAC", bitrate: "64-256 kbps", quality: "Lossy", size: "Pequeno" },
-		{ name: "OGG", bitrate: "64-500 kbps", quality: "Lossy", size: "Pequeno" },
-	];
-
-	// Cabeçalho
-	const headerY = 30;
-	ctx.fillStyle = "#3498db";
-	ctx.fillRect(10, headerY - 20, width - 20, 25);
-
-	ctx.fillStyle = "white";
-	ctx.font = "bold 12px Arial";
-	ctx.textAlign = "left";
-	ctx.fillText("Formato", 20, headerY);
-	ctx.fillText("Taxa de Bits", 150, headerY);
-	ctx.fillText("Qualidade", 300, headerY);
-	ctx.fillText("Tamanho", 450, headerY);
-
-	// Linhas
-	ctx.strokeStyle = "#bdc3c7";
-	ctx.lineWidth = 1;
-
-	let y = headerY + 10;
-	formats.forEach((format, index) => {
-		if (index % 2 === 0) {
-			ctx.fillStyle = "#f0f0f0";
-			ctx.fillRect(10, y - 15, width - 20, 30);
-		}
-
-		ctx.fillStyle = "#2c3e50";
-		ctx.font = "12px Arial";
-		ctx.textAlign = "left";
-		ctx.fillText(format.name, 20, y);
-		ctx.fillText(format.bitrate, 150, y);
-		ctx.fillText(format.quality, 300, y);
-		ctx.fillText(format.size, 450, y);
-
-		y += 40;
-	});
-}
-
-// ====================================
-// FILTROS DE FREQUÊNCIA
-// ====================================
-
-function drawFrequencyResponse(filterType) {
-	const canvas = document.getElementById("filterCanvas");
-	if (!canvas) return;
-
-	const ctx = canvas.getContext("2d");
-
-	const width = canvas.width;
-	const height = canvas.height;
-
-	// Limpar canvas
-	ctx.fillStyle = "#f8f9fa";
-	ctx.fillRect(0, 0, width, height);
-
-	// Desenhar eixos
-	ctx.strokeStyle = "#bdc3c7";
-	ctx.lineWidth = 2;
-	ctx.beginPath();
-	ctx.moveTo(50, height - 50);
-	ctx.lineTo(width - 20, height - 50);
-	ctx.stroke();
-
-	ctx.beginPath();
-	ctx.moveTo(50, 20);
-	ctx.lineTo(50, height - 50);
-	ctx.stroke();
-
-	// Desenhar resposta do filtro
-	ctx.strokeStyle = "#3498db";
-	ctx.lineWidth = 3;
-	ctx.beginPath();
-
-	const centerFreq = 500;
-	const responseHeight = height - 100;
-
-	for (let i = 0; i < width - 70; i++) {
-		const freq = (i / (width - 70)) * 1000;
-		let response = 0;
-
-		switch (filterType) {
-			case "lowpass":
-				response = 1 / (1 + (freq / centerFreq) ** 2);
-				break;
-			case "highpass":
-				response = (freq / centerFreq) ** 2 / (1 + (freq / centerFreq) ** 2);
-				break;
-			case "bandpass": {
-				const distance = Math.abs(freq - centerFreq);
-				response = 1 / (1 + (distance / 100) ** 2);
-				break;
-			}
-		}
-
-		const x = 50 + i;
-		const y = height - 50 - response * responseHeight;
-
-		if (i === 0) ctx.moveTo(x, y);
-		else ctx.lineTo(x, y);
-	}
-	ctx.stroke();
-
-	// Labels
-	ctx.fillStyle = "#2c3e50";
-	ctx.font = "bold 12px Arial";
-	ctx.textAlign = "left";
-	ctx.fillText(`Filtro ${filterType.toUpperCase()}`, 60, 30);
-	ctx.font = "10px Arial";
-	ctx.fillText("0 Hz", 40, height - 30);
-	ctx.fillText("1000 Hz", width - 80, height - 30);
-
-	ctx.save();
-	ctx.translate(20, 100);
-	ctx.rotate(-Math.PI / 2);
-	ctx.fillText("Ganho", 0, 0);
-	ctx.restore();
-}
-
-// ====================================
-// EQUALIZADOR
-// ====================================
-
-function drawEqualizer() {
-	const canvas = document.getElementById("equalizerCanvas");
-	if (!canvas) return;
-
-	const ctx = canvas.getContext("2d");
-
-	const width = canvas.width;
-	const height = canvas.height;
-
-	// Limpar canvas
-	ctx.fillStyle = "#f8f9fa";
-	ctx.fillRect(0, 0, width, height);
-
-	// Bandas de frequência
-	const bands = [
-		{ freq: "60Hz", value: 0.6 },
-		{ freq: "250Hz", value: 0.4 },
-		{ freq: "1kHz", value: 0.8 },
-		{ freq: "4kHz", value: 0.5 },
-		{ freq: "8kHz", value: 0.7 },
-		{ freq: "16kHz", value: 0.3 },
-	];
-
-	const barCount = bands.length;
-	const barWidth = (width - 40) / barCount;
-	const maxBarHeight = height - 100;
-
-	ctx.fillStyle = "#34495e";
-	ctx.fillRect(0, 0, width, height);
-
-	bands.forEach((band, index) => {
-		const x = 20 + index * barWidth;
-		const barHeight = band.value * maxBarHeight;
-		const y = height - 60 - barHeight;
-
-		// Gradiente para as barras
-		const barGradient = ctx.createLinearGradient(x, height - 60, x, y);
-		barGradient.addColorStop(0, "#2ecc71");
-		barGradient.addColorStop(1, "#27ae60");
-
-		ctx.fillStyle = barGradient;
-		ctx.fillRect(x + 5, y, barWidth - 10, barHeight);
-
-		// Borda
-		ctx.strokeStyle = "#34495e";
-		ctx.lineWidth = 2;
-		ctx.strokeRect(x + 5, y, barWidth - 10, barHeight);
-
-		// Label
-		ctx.fillStyle = "#ecf0f1";
-		ctx.font = "12px Arial";
-		ctx.textAlign = "center";
-		ctx.fillText(band.freq, x + barWidth / 2, height - 20);
-	});
-
-	// Título
-	ctx.fillStyle = "#3498db";
-	ctx.font = "bold 16px Arial";
-	ctx.textAlign = "left";
-	ctx.fillText("Equalizador Gráfico", 20, 30);
-}
-
-// ====================================
-// ESPECTRO EM TEMPO REAL
-// ====================================
-
-let spectrumAnimationActive = false;
-let spectrumAnimationId = null;
-
-function startSpectrumAnalyzer() {
-	const canvas = document.getElementById("spectrumCanvas");
-	if (!canvas) return;
-
-	const ctx = canvas.getContext("2d");
-	spectrumAnimationActive = true;
-
-	function animate() {
-		const width = canvas.width;
-		const height = canvas.height;
-
-		// Efeito de fade
-		ctx.fillStyle = "rgba(248, 249, 250, 0.1)";
-		ctx.fillRect(0, 0, width, height);
-
-		// Desenhar barras
-		const barCount = 64;
-		const barWidth = width / barCount;
-
-		for (let i = 0; i < barCount; i++) {
-			const hue = (i / barCount) * 360;
-			const randomHeight = Math.random() * height;
-
-			ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-			ctx.fillRect(
-				i * barWidth,
-				height - randomHeight,
-				barWidth - 2,
-				randomHeight,
-			);
-		}
-
-		// Desenhar linha de eixo
-		ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
-		ctx.lineWidth = 1;
-		ctx.beginPath();
-		ctx.moveTo(0, height);
-		ctx.lineTo(width, height);
-		ctx.stroke();
-
-		if (spectrumAnimationActive) {
-			spectrumAnimationId = requestAnimationFrame(animate);
-		}
-	}
-
-	animate();
-}
-
-// ====================================
-// QUIZ INTERATIVO
+// QUIZ
 // ====================================
 
 const quizQuestions = [
@@ -543,19 +218,16 @@ let selectedQuestions = [];
 let userAnswers = {};
 
 function startQuiz() {
-	// Selecionar 5 perguntas aleatórias de 15
 	selectedQuestions = [];
 	const shuffled = [...quizQuestions].sort(() => Math.random() - 0.5);
 	selectedQuestions = shuffled.slice(0, 5);
 
 	userAnswers = {};
 
-	// Mostrar container de perguntas
 	document.getElementById("quizIntro").style.display = "none";
 	document.getElementById("quizQuestions").style.display = "block";
 	document.getElementById("quizResults").style.display = "none";
 
-	// Renderizar perguntas
 	const questionsContent = document.getElementById("questionsContent");
 	questionsContent.innerHTML = "";
 
@@ -588,7 +260,6 @@ function startQuiz() {
 function selectAnswer(questionIndex, optionIndex) {
 	userAnswers[questionIndex] = optionIndex;
 
-	// Atualizar visual da opção selecionada
 	const labels = document.querySelectorAll(
 		`input[name="question-${questionIndex}"]`,
 	);
@@ -603,13 +274,12 @@ function selectAnswer(questionIndex, optionIndex) {
 }
 
 function submitQuiz() {
-	// Verificar se todas as perguntas foram respondidas
+
 	if (Object.keys(userAnswers).length !== selectedQuestions.length) {
 		alert("Por favor, responda todas as perguntas antes de enviar!");
 		return;
 	}
 
-	// Calcular pontuação
 	let correctAnswers = 0;
 	selectedQuestions.forEach((q, index) => {
 		if (userAnswers[index] === q.correct) {
@@ -621,12 +291,10 @@ function submitQuiz() {
 		(correctAnswers / selectedQuestions.length) * 100,
 	);
 
-	// Mostrar resultados
 	document.getElementById("quizIntro").style.display = "none";
 	document.getElementById("quizQuestions").style.display = "none";
 	document.getElementById("quizResults").style.display = "block";
 
-	// Título do resultado
 	let resultTitle = "";
 	if (percentage === 100) {
 		resultTitle = "🎉 Perfeito! Você acertou tudo!";
@@ -642,7 +310,6 @@ function submitQuiz() {
 
 	document.getElementById("resultTitle").textContent = resultTitle;
 
-	// Desenhar círculo de pontuação
 	drawScoreCircle(percentage, correctAnswers, selectedQuestions.length);
 
 	// Mostrar detalhes
@@ -671,55 +338,6 @@ function submitQuiz() {
 	});
 
 	document.getElementById("resultDetails").innerHTML = detailsHTML;
-}
-
-function drawScoreCircle(percentage, correct, total) {
-	const canvas = document.getElementById("scoreCanvas");
-	const ctx = canvas.getContext("2d");
-
-	const centerX = canvas.width / 2;
-	const centerY = canvas.height / 2;
-	const radius = 80;
-
-	// Limpar canvas
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	// Desenhar círculo de fundo
-	ctx.fillStyle = "#ecf0f1";
-	ctx.beginPath();
-	ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-	ctx.fill();
-
-	// Desenhar círculo de progresso
-	const startAngle = -Math.PI / 2;
-	const endAngle = startAngle + (percentage / 100) * Math.PI * 2;
-
-	const gradient = ctx.createLinearGradient(
-		centerX - radius,
-		centerY - radius,
-		centerX + radius,
-		centerY + radius,
-	);
-	gradient.addColorStop(0, "#3498db");
-	gradient.addColorStop(1, "#2980b9");
-
-	ctx.strokeStyle = gradient;
-	ctx.lineWidth = 12;
-	ctx.beginPath();
-	ctx.arc(centerX, centerY, radius - 6, startAngle, endAngle);
-	ctx.stroke();
-
-	// Texto do percentual
-	ctx.fillStyle = "#2c3e50";
-	ctx.font = "bold 48px Arial";
-	ctx.textAlign = "center";
-	ctx.textBaseline = "middle";
-	ctx.fillText(`${percentage}%`, centerX, centerY - 10);
-
-	// Texto de acertos
-	ctx.font = "bold 16px Arial";
-	ctx.fillStyle = "#7f8c8d";
-	ctx.fillText(`${correct}/${total} acertos`, centerX, centerY + 25);
 }
 
 function restartQuiz() {

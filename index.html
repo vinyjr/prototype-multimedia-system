@@ -87,7 +87,7 @@
     <section id="conceitos" class="section">
       <h2>Conceitos Fundamentais de Áudio Digital</h2>
 
-      <!-- CARD COM DEFINIÇÃO -->
+      <!-- CARD -->
       <div class="content-card">
         <h3>O que é Áudio Digital?</h3>
         <p>
@@ -127,11 +127,10 @@
     <section id="formatos" class="section">
       <h2>Formatos e Codecs de Áudio</h2>
 
-      <!-- TABELA DE FORMATOS (IMAGEM MATRICIAL - Canvas) -->
+      
+      <!-- TABELA DE FORMATOS -->
       <div class="content-card">
-        <h3>Comparação de Formatos</h3>
-        <canvas id="formatsTableCanvas" width="800" height="400" class="canvas-display"></canvas>
-        <button class="btn btn-small" onclick="drawFormatsTable()">Carregar Tabela</button>
+        <img src="/assets/images/comparar-formatos.png" alt="tabela de comparação de formatos de áudio">
       </div>
 
       <!-- VÍDEO: Demonstração de Compressão -->
@@ -187,38 +186,54 @@
 
     <!-- SEÇÃO: PROCESSAMENTO DE ÁUDIO -->
     <section id="processamento" class="section">
-      <h2>Processamento de Áudio Digital</h2>
+      <div class="content-card">
+        <h2>Processamento de Áudio Digital</h2>
+        <p>
+          O Processamento de Áudio é o conjunto de técnicas e algoritmos aplicados 
+          a sinais de áudio (geralmente digitais) para manipular características 
+          como volume, frequência, dinâmica e timbre, a fim de melhorar a 
+          qualidade, criar efeitos ou atingir um resultado artístico específico.
+        </p>
+      </div>
 
-      <!-- ANIMAÇÃO: Filtros -->
+      <!-- Filtros -->
       <div class="media-section">
         <h3>Tipos de Filtros de Áudio</h3>
         <div class="filter-demo">
           <p>Filtros são usados para processar sinais de áudio. Veja a resposta em frequência:</p>
-          <div class="filter-buttons">
-            <button class="btn btn-small" onclick="drawFrequencyResponse('lowpass')">Filtro Passa-Baixo</button>
-            <button class="btn btn-small" onclick="drawFrequencyResponse('highpass')">Filtro Passa-Alto</button>
-            <button class="btn btn-small" onclick="drawFrequencyResponse('bandpass')">Filtro Passa-Banda</button>
+          <div class="filter-img">
+            <img src="assets/images/filtro-bandpass.svg" alt="Filtro Band Pass">
+            <p class="caption">
+              Permite a passagem de uma faixa estreita de frequências e 
+              bloqueia (atenua) todas as frequências baixas e todas as 
+              frequências altas.
+            </p>
+            <img src="assets/images/filtro-lowpass.svg" alt="Filtro Low Pass">
+            <p class="caption">
+              Permite a passagem das frequências baixas e bloqueia ou 
+              atenua as frequências altas.
+            </p>
+            <img src="assets/images/filtro-highpass.svg" alt="Filtro High Pass">
+            <p class="caption">
+              Permite a passagem das frequências altas e bloqueia ou atenua 
+              as frequências baixas.
+            </p>
           </div>
         </div>
-        <canvas id="filterCanvas" width="800" height="300" class="canvas-display"></canvas>
       </div>
 
-      <!-- IMAGEM MATRICIAL: Equalizador (Canvas) -->
+      <!-- Equalizador -->
       <div class="media-section">
-        <h3>Equalizador de Áudio</h3>
-        <canvas id="equalizerCanvas" width="800" height="300" class="canvas-display"></canvas>
-        <button class="btn btn-small" onclick="drawEqualizer()">Desenhar Equalizador</button>
-        <p class="caption">Representação visual de um equalizador com bandas de frequência.</p>
-      </div>
-
-      <!-- ANIMAÇÃO: Análise Espectral em Tempo Real -->
-      <div class="media-section">
-        <h3>Análise Espectral Avançada</h3>
-        <div class="spectrum-analyzer">
-          <canvas id="spectrumCanvas" width="800" height="250" class="canvas-display"></canvas>
-          <button class="btn btn-small" onclick="startSpectrumAnalyzer()">Iniciar Análise</button>
-        </div>
-        <p class="caption">Visualização do espectro em tempo real enquanto áudio é reproduzido.</p>
+        <img src="assets/images/equalizador-grafico.svg" alt="Imagem de um equalizador gráfico">
+        <p class="caption">
+          Representação visual de um equalizador com bandas de frequência.
+          <br>
+          <br>
+          O Equalizador é uma das ferramentas mais fundamentais no 
+          processamento de áudio. Ele permite ajustar o balanço de frequência 
+          de um sinal, aumentando ou diminuindo o volume em 
+          faixas de frequência específicas.
+        </p>
       </div>
 
       <div class="navigation-buttons">

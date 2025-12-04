@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200mm"
+   height="100mm"
+   viewBox="0 0 200 100"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     style="display:none">
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:0.515672;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10"
+       width="204.02596"
+       height="103.64518"
+       x="-1.360173"
+       y="-1.9042423" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.101293;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.3786493,11.024562 V 86.812114 H 195.42658"
+       id="path1" />
+    <path
+       style="opacity:1;fill:none;stroke:#1fb2c0;stroke-width:0.500129;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 10.675842,115.70304 c 21.196536,3.507 42.393069,7.01401 64.553039,15.43249 22.15997,8.41848 45.282449,21.74791 66.365399,27.41506 21.08295,5.66714 40.12516,3.67182 59.16775,1.67645"
+       id="path2"
+       transform="matrix(0.9981563,0,0,0.99999942,-5.0708439,-89.226444)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="5.1686583"
+       y="91.811661"
+       id="text9"><tspan
+         id="tspan9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="5.1686583"
+         y="91.811661">0 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="179.7758"
+       y="91.680283"
+       id="text9-1"><tspan
+         id="tspan9-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="179.7758"
+         y="91.680283">1000 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="8.8155127"
+       y="15.826433"
+       id="text3"><tspan
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans Bold';fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.2"
+         x="8.8155127"
+         y="15.826433">Filtro LOWPASS</tspan></text>
+  </g>
+  <g
+     id="g14"
+     style="display:none">
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:0.515672;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect11"
+       width="204.02596"
+       height="103.64518"
+       x="-1.360173"
+       y="-1.9042423" />
+    <path
+       style="opacity:1;fill:none;stroke:#1fb2c0;stroke-width:0.500129;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 10.703208,175.82496 c 10.459733,-0.76031 20.919254,-1.5206 35.558927,-8.05989 14.639673,-6.53928 33.458316,-18.85702 59.872805,-27.90521 26.41448,-9.04819 60.42442,-14.82659 94.43438,-20.60499"
+       id="path12"
+       transform="matrix(0.99815629,0,0,0.99999943,-5.0708438,-89.226443)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.101293;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.3786493,11.024562 V 86.812114 H 195.42658"
+       id="path11" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="5.1686583"
+       y="91.811661"
+       id="text12"><tspan
+         id="tspan12"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="5.1686583"
+         y="91.811661">0 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="179.7758"
+       y="91.680283"
+       id="text13"><tspan
+         id="tspan13"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="179.7758"
+         y="91.680283">1000 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="8.8155127"
+       y="15.826433"
+       id="text14"><tspan
+         id="tspan14"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans Bold';fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.2"
+         x="8.8155127"
+         y="15.826433">Filtro HIGHPASS  </tspan></text>
+  </g>
+  <g
+     id="g18">
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:0.515672;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15"
+       width="204.02596"
+       height="103.64518"
+       x="-1.360173"
+       y="-1.9042423" />
+    <path
+       style="opacity:1;fill:none;stroke:#1fb2c0;stroke-width:0.500129;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 10.703208,175.82496 c 10.459733,-0.76031 20.919351,-1.52061 33.846466,-3.92207 12.927116,-2.40146 28.321095,-6.44395 39.336602,-18.69434 11.015507,-12.25038 17.652134,-32.70828 24.005894,-32.80173 6.35376,-0.0934 12.42453,20.17767 27.8028,31.80865 15.37827,11.63098 40.06399,14.62175 64.74977,17.61253"
+       id="path15"
+       transform="matrix(0.99815629,0,0,0.99999943,-5.0708438,-89.226443)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.101293;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.3786493,11.024562 V 86.812114 H 195.42658"
+       id="path16" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="5.1686583"
+       y="91.811661"
+       id="text16"><tspan
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="5.1686583"
+         y="91.811661">0 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:#1fb2c0;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="179.7758"
+       y="91.680283"
+       id="text17"><tspan
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="179.7758"
+         y="91.680283">1000 Hz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="8.8155127"
+       y="15.826433"
+       id="text18"><tspan
+         id="tspan18"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Ubuntu Sans';-inkscape-font-specification:'Ubuntu Sans Bold';fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.2"
+         x="8.8155127"
+         y="15.826433">Filtro BANDPASS </tspan></text>
+  </g>
+</svg>

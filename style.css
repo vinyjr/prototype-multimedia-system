@@ -337,7 +337,7 @@ MAIN CONTAINER
   margin: 1rem 0;
 }
 
-.filter-buttons {
+.filter-img {
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
@@ -563,10 +563,6 @@ MAIN CONTAINER
   margin-top: 3rem;
   flex-wrap: wrap;
 }
-
-/* ====================================
-   RESPONSIVIDADE
-   ==================================== */
 
 @media (max-width: 768px) {
   .navbar-container {
