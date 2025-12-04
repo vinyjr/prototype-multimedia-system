@@ -268,16 +268,6 @@ MAIN CONTAINER
   background: white;
 }
 
-.wave-svg {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  display: block;
-  margin: 1rem 0;
-}
-
 .caption {
   font-size: 0.85rem;
   color: var(--gray-color);
