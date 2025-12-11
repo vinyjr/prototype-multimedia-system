@@ -118,8 +118,8 @@
         <h3>Captura de som</h3>
         <img src="assets/images/screenshot_2.png" style="width: 800px; height: auto;" alt="Print de tela do Audacity mostrando faixa de áudio">
         <p class="caption">
-          O áudio digitalizado é o processo de transformar um som real — como o violão — em um sinal 
-          digital composto por amostras numéricas. Essas amostras representam a forma da onda sonora e podem ser 
+          O áudio digitalizado é o processo de transformar um som real — como o violão — em um sinal
+          digital composto por amostras numéricas. Essas amostras representam a forma da onda sonora e podem ser
           visualizadas, editadas e processadas.
         </p>
         <div class="audio-player">
@@ -148,30 +148,43 @@
 
       <!-- TABELA DE FORMATOS -->
       <div class="content-card">
-        <img src="/assets/images/comparar-formatos.png" alt="tabela de comparação de formatos de áudio">
+          <img src="assets/images/comparar-formatos.png" alt="tabela de comparação de formatos de áudio">
       </div>
 
       <!-- MIDI: Informações sobre MIDI -->
       <div class="content-card">
         <h3>Formato MIDI (Musical Instrument Digital Interface)</h3>
-        <p>
-          MIDI não é um formato de áudio como WAV ou MP3. Em vez disso, é um protocolo de controle que armazena
-          instruções musicais como notas, velocidade e duração. É ideal para música sintetizada.
+        <img src="assets/images/screennshot-mid.png" style="width: 800px; height: auto;" alt="Piano Roll da música MIDI criada">
+        <p class="caption">
+          Cada bloco representa uma nota, sua duração e intensidade.
+          O MIDI não contém áudio, apenas instruções como estas.
         </p>
+        <br>
+        <button class="btn btn-primary" onclick="playMIDI()">Tocar música MIDI</button>
+      </div>
 
-        <div class="midi-demo">
-          <h4>Demonstração MIDI Interativa:</h4>
-          <div class="piano-keys">
-            <button class="key white" onmousedown="playNote(262)" onmouseup="stopNote()" title="Dó">C</button>
-            <button class="key white" onmousedown="playNote(294)" onmouseup="stopNote()" title="Ré">D</button>
-            <button class="key white" onmousedown="playNote(330)" onmouseup="stopNote()" title="Mi">E</button>
-            <button class="key white" onmousedown="playNote(349)" onmouseup="stopNote()" title="Fá">F</button>
-            <button class="key white" onmousedown="playNote(392)" onmouseup="stopNote()" title="Sol">G</button>
-            <button class="key white" onmousedown="playNote(440)" onmouseup="stopNote()" title="Lá">A</button>
-            <button class="key white" onmousedown="playNote(494)" onmouseup="stopNote()" title="Si">B</button>
+      <!-- Piano Interativo com notas do MIDI -->
+      <div class="content-card">
+        <h3>Piano Interativo (Notas MIDI)</h3>
+        <p>Clique nas teclas para ouvir as notas que fazem parte da música MIDI criada.
+        <div class="piano-container">
+          <div id="midiNotesDisplay" style="text-align: center; margin-bottom: 1rem;">
+            <p style="font-size: 0.9rem; color: var(--gray-color);">
+              <strong>Notas carregadas do MIDI:</strong> <span id="notesLoaded" style="color: var(--primary-color); font-weight: bold;">Carregando...</span>
+            </p>
           </div>
-          <p style="text-align: center; margin-top: 10px; font-size: 12px">
-            Clique e segure nas teclas para ouvir as notas
+
+          <div class="piano">
+            <button class="key" onclick="playTone('C4')">C</button>
+            <button class="key" onclick="playTone('D4')">D</button>
+            <button class="key" onclick="playTone('E4')">E</button>
+            <button class="key" onclick="playTone('F4')">F</button>
+            <button class="key" onclick="playTone('G4')">G</button>
+            <button class="key" onclick="playTone('A4')">A</button>
+            <button class="key" onclick="playTone('B4')">B</button>
+          </div>
+          <p style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;">
+            Clique em qualquer tecla para ouvir a nota.
           </p>
         </div>
       </div>
@@ -246,8 +259,8 @@
           <br>
         </p>
         <p class="caption">
-        - A compressão dinâmica é um processo de processamento de áudio que reduz a diferença 
-         entre as partes mais altas e mais baixas de um som.Ela diminui automaticamente os picos 
+        - A compressão dinâmica é um processo de processamento de áudio que reduz a diferença
+         entre as partes mais altas e mais baixas de um som.Ela diminui automaticamente os picos
          muito fortes e aumenta os trechos mais fracos, deixando o áudio mais uniforme e equilibrado.
         </p>
       </div>
@@ -288,6 +301,8 @@
       </div>
     </section>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi/build/Midi.min.js"></script>
   <script src="./script.js"></script>
 </body>
 

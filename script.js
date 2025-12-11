@@ -3,7 +3,7 @@
 // ====================================
 
 function goToHome() {
-	goToSection("home")
+	goToSection("home");
 }
 
 function goToSection(sectionId) {
@@ -54,9 +54,7 @@ function playNote(frequency) {
 	if (oscillator) {
 		try {
 			oscillator.stop();
-		} catch (e) {
-	
-		}
+		} catch (e) {}
 	}
 
 	oscillator = ctx.createOscillator();
@@ -70,6 +68,155 @@ function playNote(frequency) {
 
 	gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
 	oscillator.start(ctx.currentTime);
+}
+
+let midiSynth = null;
+let isMidiPlaying = false;
+
+async function playMIDI() {
+	// Se está tocando, para tudo
+	if (isMidiPlaying && midiSynth) {
+		midiSynth.triggerRelease();
+		isMidiPlaying = false;
+		return;
+	}
+
+	try {
+		// Garantir que Tone.js está iniciado
+		if (Tone.Synth.prototype.triggerAttackRelease) {
+			await Tone.start();
+		}
+
+		const response = await fetch("./assets/audios/music.mid");
+		const buffer = await response.arrayBuffer();
+		const midi = new Midi(buffer);
+
+		// Criar novo sintetizador
+		midiSynth = new Tone.PolySynth(Tone.Synth, {
+			oscillator: { type: "triangle" },
+			envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 0.5 },
+		}).toDestination();
+
+		isMidiPlaying = true;
+
+		midi.tracks.forEach((track) => {
+			track.notes.forEach((note) => {
+				midiSynth.triggerAttackRelease(
+					note.name,
+					note.duration,
+					note.time,
+					note.velocity,
+				);
+			});
+		});
+
+		// Marcar como finalizado após a última nota
+		const totalDuration = midi.tracks.reduce((max, track) => {
+			const trackDuration = Math.max(
+				...track.notes.map(
+					(n) => (n.time || 0) + (parseFloat(n.duration) || 0),
+				),
+			);
+			return Math.max(max, trackDuration);
+		}, 0);
+
+		setTimeout(
+			() => {
+				isMidiPlaying = false;
+			},
+			(totalDuration + 1) * 1000,
+		);
+	} catch (error) {
+		console.error("Erro ao tocar MIDI:", error);
+		isMidiPlaying = false;
+	}
+}
+
+// ====================================
+// PIANO INTERATIVO COM NOTAS MIDI
+// ====================================
+
+let pianoSynth = null;
+let isAudioInitialized = false;
+let midiNotes = [];
+
+async function initPianoAudio() {
+	if (!isAudioInitialized) {
+		await Tone.start();
+		pianoSynth = new Tone.Synth({
+			oscillator: { type: "triangle" },
+			envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 0.5 },
+		}).toDestination();
+		isAudioInitialized = true;
+
+		await loadMidiNotes();
+	}
+}
+
+async function loadMidiNotes() {
+	try {
+		const response = await fetch("./assets/audios/music.mid");
+		if (!response.ok) {
+			console.warn(
+				"Não foi possível carregar o arquivo MIDI para o piano interativo",
+			);
+			return;
+		}
+
+		const buffer = await response.arrayBuffer();
+		const midi = new Midi(buffer);
+
+		// Extrair todas as notas únicas do arquivo MIDI
+		const notesSet = new Set();
+		midi.tracks.forEach((track) => {
+			track.notes.forEach((note) => {
+				notesSet.add(note.name);
+			});
+		});
+
+		midiNotes = Array.from(notesSet).sort();
+		console.log("Notas MIDI carregadas:", midiNotes);
+
+		// Atualizar display das notas carregadas
+		updateMidiNotesDisplay();
+	} catch (error) {
+		console.warn("Erro ao carregar notas MIDI:", error);
+		updateMidiNotesDisplay();
+	}
+}
+
+function updateMidiNotesDisplay() {
+	const notesLoadedElement = document.getElementById("notesLoaded");
+	if (!notesLoadedElement) return;
+
+	if (midiNotes.length > 0) {
+		notesLoadedElement.textContent = midiNotes.join(", ");
+		notesLoadedElement.style.color = "var(--success-color)";
+	} else {
+		notesLoadedElement.textContent =
+			"Usando notas padrão (C4, D4, E4, F4, G4, A4, B4)";
+		notesLoadedElement.style.color = "var(--gray-color)";
+	}
+}
+
+function playTone(note) {
+	initPianoAudio().then(() => {
+		if (pianoSynth) {
+			// Reproduzir a nota com duração de colcheia
+			pianoSynth.triggerAttackRelease(note, "8n");
+
+			// Feedback visual - adicionar animação à tecla
+			const buttons = document.querySelectorAll(".key");
+			buttons.forEach((btn) => {
+				if (btn.textContent.trim() === note.charAt(0)) {
+					btn.style.transform = "translateY(-4px)";
+					setTimeout(() => {
+						btn.style.transform = "translateY(0)";
+					}, 100);
+				}
+			});
+		}
+	});
 }
 
 // ====================================
@@ -246,8 +393,9 @@ function startQuiz() {
 		});
 
 		questionDiv.innerHTML = `
-            <h4><span class="question-number">Pergunta ${index + 1} de ${selectedQuestions.length
-			}:</span> ${q.question}</h4>
+            <h4><span class="question-number">Pergunta ${index + 1} de ${
+							selectedQuestions.length
+						}:</span> ${q.question}</h4>
             <div class="options">
                 ${optionsHTML}
             </div>
@@ -274,7 +422,6 @@ function selectAnswer(questionIndex, optionIndex) {
 }
 
 function submitQuiz() {
-
 	if (Object.keys(userAnswers).length !== selectedQuestions.length) {
 		alert("Por favor, responda todas as perguntas antes de enviar!");
 		return;
@@ -361,7 +508,7 @@ function playAudio(audioPath, vol = 0.2) {
 	const audio = new Audio(audioPath);
 
 	//Definir volume
-	audio.volume = Math.max(0.0, Math.min(1.0, vol))
+	audio.volume = Math.max(0.0, Math.min(1.0, vol));
 
 	audio.play();
 
