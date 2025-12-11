@@ -309,8 +309,7 @@ const quizQuestions = [
 		correct: 1,
 	},
 	{
-		question:
-			"Qual é o primeiro passo no processo de digitalização do som (como mostrado no fluxograma)?",
+		question: "Qual é o primeiro passo no processo de digitalização do som ?",
 		options: [
 			"Amostragem",
 			"Quantização",
@@ -493,6 +492,60 @@ function restartQuiz() {
 	document.getElementById("quizResults").style.display = "none";
 	selectedQuestions = [];
 	userAnswers = {};
+}
+
+function drawScoreCircle(percentage, correct, total) {
+	const canvas = document.getElementById("scoreCanvas");
+	if (!canvas) return;
+
+	const ctx = canvas.getContext("2d");
+	const centerX = 100;
+	const centerY = 100;
+	const radius = 80;
+
+	// Limpar canvas
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	// Círculo de fundo
+	ctx.beginPath();
+	ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+	ctx.strokeStyle = "#e0e0e0";
+	ctx.lineWidth = 15;
+	ctx.stroke();
+
+	// Círculo de progresso
+	const startAngle = -Math.PI / 2;
+	const endAngle = startAngle + (2 * Math.PI * percentage) / 100;
+
+	ctx.beginPath();
+	ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+
+	// Cor baseada na pontuação
+	if (percentage >= 80) {
+		ctx.strokeStyle = "#2ecc71"; // Verde
+	} else if (percentage >= 60) {
+		ctx.strokeStyle = "#3498db"; // Azul
+	} else if (percentage >= 40) {
+		ctx.strokeStyle = "#f39c12"; // Laranja
+	} else {
+		ctx.strokeStyle = "#e74c3c"; // Vermelho
+	}
+
+	ctx.lineWidth = 15;
+	ctx.lineCap = "round";
+	ctx.stroke();
+
+	// Texto da porcentagem
+	ctx.fillStyle = "#2c3e50";
+	ctx.font = "bold 36px 'Segoe UI', sans-serif";
+	ctx.textAlign = "center";
+	ctx.textBaseline = "middle";
+	ctx.fillText(`${percentage}%`, centerX, centerY - 10);
+
+	// Texto de acertos
+	ctx.font = "16px 'Segoe UI', sans-serif";
+	ctx.fillStyle = "#7f8c8d";
+	ctx.fillText(`${correct}/${total}`, centerX, centerY + 20);
 }
 
 // ====================================
