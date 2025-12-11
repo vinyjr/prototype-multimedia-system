@@ -115,13 +115,25 @@
 
       <!-- Exemplo de Som Digitalizado -->
       <div class="media-section">
-        <h3>Exemplo de Áudio Digitalizado</h3>
+        <h3>Captura de som</h3>
+        <img src="assets/images/screenshot_2.png" style="width: 800px; height: auto;" alt="Print de tela do Audacity mostrando faixa de áudio">
+        <p class="caption">
+          O áudio digitalizado é o processo de transformar um som real — como o violão — em um sinal 
+          digital composto por amostras numéricas. Essas amostras representam a forma da onda sonora e podem ser 
+          visualizadas, editadas e processadas.
+        </p>
         <div class="audio-player">
-          <button class="btn btn-small" onclick="playAudio('assets/audios/som-440hz.mp3')">Som 440 Hz (Lá)</button>
-          <button class="btn btn-small" onclick="playAudio('assets/audios/onda-quadrada.mp3')">Onda Quadrada</button>
-          <button class="btn btn-small" onclick="playAudio('assets/audios/ruido-branco.mp3')">Ruído Branco</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/violao-original.wav')">🎸 Áudio 1 - Violão (Sem efeitos)</button>
         </div>
-        <p class="caption">Exemplos de áudios digitalizados gerados pelo Audacity.</p>
+        <p>
+          Aplicando efeitos em áudios capturados:
+        </p>
+        <div class="audio-player">
+          <button class="btn btn-small" onclick="playAudio('assets/audios/violao-noise-reduction.wav')">Redução de Ruído (Noise Reduction)</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/violao-normalize.wav')">Normalização (Normalize)</button>
+          <button class="btn btn-small" onclick="playAudio('assets/audios/violao-compressor.wav')">Compressão Dinâmica (Compressor)</button>
+        </div>
+        <p class="caption">Áudio capturado e efeitos aplicados no Audacity</p>
       </div>
 
       <div class="navigation-buttons">
@@ -133,7 +145,6 @@
     <!-- SEÇÃO: FORMATOS DE ÁUDIO -->
     <section id="formatos" class="section">
       <h2>Formatos e Codecs de Áudio</h2>
-
 
       <!-- TABELA DE FORMATOS -->
       <div class="content-card">

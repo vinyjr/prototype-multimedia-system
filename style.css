@@ -281,6 +281,7 @@ MAIN CONTAINER
 
 .audio-player {
   display: flex;
+  flex-direction: columns;
   gap: 1rem;
   flex-wrap: wrap;
   margin: 1.5rem 0;
