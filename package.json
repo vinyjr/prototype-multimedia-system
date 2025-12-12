@@ -1,0 +1,24 @@
+{
+	"name": "prototype-multimedia-system",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "node --watch server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vinyjr/prototype-multimedia-system.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/vinyjr/prototype-multimedia-system/issues"
+	},
+	"homepage": "https://github.com/vinyjr/prototype-multimedia-system#readme",
+	"dependencies": {
+		"express": "^5.2.1"
+	}
+}
